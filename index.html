@@ -4,45 +4,75 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fernweh Coffee</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<style>
+  body {
+    margin: 0;
+    background: #F5EBDD;
+    color: #3B2A2A;
+    font-family: Georgia, serif;
+    line-height: 1.5;
+  }
+  .wrap { max-width: 500px; margin: 0 auto; padding: 40px 20px; }
+  h1 { text-align: center; font-size: 2rem; margin-bottom: 0; }
+  .tagline { text-align: center; color: #A65E2E; margin-top: 5px; }
+  nav { text-align: center; margin: 20px 0 40px; }
+  nav a {
+    color: #3B2A2A; text-decoration: none; margin: 0 12px;
+    border-bottom: 2px solid transparent; padding-bottom: 2px;
+  }
+  nav a.active { border-color: #A65E2E; }
+  .page { display: none; }
+  .page.active { display: block; }
+  p.lede { text-align: center; max-width: 350px; margin: 0 auto 20px; }
+  .center { text-align: center; }
+  .btn {
+    display: inline-block; background: #A65E2E; color: #fff;
+    padding: 10px 20px; border-radius: 4px; text-decoration: none;
+  }
+  h2 { font-size: 1.2rem; border-bottom: 1px solid #A65E2E; padding-bottom: 5px; }
+  .item { display: flex; justify-content: space-between; padding: 8px 0; }
+  .item span:last-child { color: #A65E2E; }
+  footer { text-align: center; color: #8a7f72; margin-top: 40px; font-size: 0.9rem; }
+</style>
 </head>
 <body>
 <div class="wrap">
 
-  <header class="top">
-    <a class="mark" href="home.html">Fernweh</a>
-    <p class="tagline">coffee, quietly done</p>
-    <nav>
-      <a class="active" href="home.html">Home</a>
-      <a href="coffee.html">Coffee</a>
-    </nav>
-  </header>
+  <h1>Fernweh</h1>
+  <p class="tagline">coffee, quietly done</p>
 
-  <div class="hero">
-    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M20 6c2 3-2 5 0 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.5" style="color:var(--coffee)"/>
-      <path d="M30 6c2 3-2 5 0 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.5" style="color:var(--coffee)"/>
-      <path d="M18 22h48l-4 40a8 8 0 01-8 7H30a8 8 0 01-8-7l-4-40z" stroke="var(--ink)" stroke-width="2.5" fill="var(--card)"/>
-      <path d="M64 30h6a10 10 0 010 20h-4" stroke="var(--ink)" stroke-width="2.5" fill="none"/>
-      <line x1="14" y1="22" x2="70" y2="22" stroke="var(--ink)" stroke-width="2.5"/>
-    </svg>
-    <p class="lede">A small counter near the corner of 5th and Elm. Good beans, no rush, seats for reading.</p>
-    <a class="btn" href="coffee.html">See the coffee</a>
+  <nav>
+    <a href="#" class="active" onclick="show('home')">Home</a>
+    <a href="#" onclick="show('coffee')">Coffee</a>
+  </nav>
+
+  <div class="page active" id="home">
+    <p class="lede">A small counter near 5th and Elm. Good beans, no rush.</p>
+    <p class="center"><a class="btn" href="#" onclick="show('coffee')">See the coffee</a></p>
   </div>
 
-  <section>
-    <h2>Today</h2>
-    <div class="details">
-      <div class="row"><span>Open now</span><span>7am – 4pm</span></div>
-      <div class="row"><span>Address</span><span>214 Elm Street</span></div>
-    </div>
-  </section>
+  <div class="page" id="coffee">
+    <h2>Espresso based</h2>
+    <div class="item"><span>Espresso</span><span>$3.00</span></div>
+    <div class="item"><span>Cortado</span><span>$4.25</span></div>
+    <div class="item"><span>Cappuccino</span><span>$4.50</span></div>
+    <div class="item"><span>Oat latte</span><span>$5.00</span></div>
 
-  <footer>Fernweh Coffee · 214 Elm Street</footer>
+    <h2>Brewed</h2>
+    <div class="item"><span>Drip coffee</span><span>$3.50</span></div>
+    <div class="item"><span>Pour over</span><span>$5.50</span></div>
+    <div class="item"><span>Cold brew</span><span>$4.75</span></div>
+  </div>
+
+  <footer>214 Elm Street · 7am–4pm</footer>
 
 </div>
+
+<script>
+  function show(page) {
+    document.getElementById('home').classList.toggle('active', page === 'home');
+    document.getElementById('coffee').classList.toggle('active', page === 'coffee');
+  }
+</script>
 </body>
 </html>
